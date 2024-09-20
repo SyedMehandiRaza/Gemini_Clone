@@ -1,10 +1,190 @@
+// import "./Main.css";
+// import { assets } from "../../assets/assets";
+// import { useContext } from "react";
+// import { Context } from "../../context/Context";
+// const Main = () => {
+
+//   const {onSent, recentPrompt,showResult,loading,resultData,setInput,input} = useContext(Context)
+
+//   return (
+//     <div className="main">
+//       <div className="nav">
+//         <p>Gemini</p>
+//         <img src={assets.user_icon} alt="" />
+//       </div>
+//       <div className="main-container">
+
+//         {!showResult
+//         ?<>
+//         <div className="greet">
+//           <p>
+//             <span>Hello, Syed.</span>
+//           </p>
+//           <p>How can i help you today?</p>
+//         </div>
+//         <div className="cards">
+//           <div className="card">
+//             <p>Suggest a beautifull place on the upcomming road trip</p>
+//             <img src={assets.compass_icon} alt="" />
+//           </div>
+//           <div className="card">
+//             <p>Briefly summerize this concept: urban planning</p>
+//             <img src={assets.bulb_icon} alt="" />
+//           </div>
+//           <div className="card">
+//             <p>Brain Storm team bonding for our work retreat</p>
+//             <img src={assets.message_icon} alt="" />
+//           </div>
+//           <div className="card">
+//             <p>Improve the readibiality of the following code</p>
+//             <img src={assets.code_icon} alt="" />
+//           </div>
+//         </div>
+//         </>
+//         :<div className="result">
+//            <div className="result-title">
+//             <img src={assets.user_icon} alt="" />
+//             <p>{recentPrompt}</p>
+//            </div>
+//            <div className="result-data">
+//             <img src={assets.gemini_icon} alt="" />
+//             <p dangerouslySetInnerHTML={{__html:resultData}}></p>
+//            </div>
+//           </div>
+//            }
+
+//         <div className="main-bottom">
+//           <div className="search-box">
+//             <input onChange={(e)=>setInput(e.target.value)} value={input} type="text" placeholder="Enter a promp here..." />
+//             <img src={assets.gallery_icon} alt="" />
+//             <img src={assets.mic_icon} alt="" />
+//             <img onClick={()=>onSent()} src={assets.send_icon} alt="" />
+//           </div>
+//           <p className="bottom-info">
+//         Gemini may display inaccurate info, including about people, so double-check its responses. Your privacy and Gemini Apps
+//         </p>
+//         </div>
+
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Main;
+
+// import "./Main.css";
+// import { assets } from "../../assets/assets";
+// import { useContext, useEffect } from "react";
+// import { Context } from "../../context/Context";
+
+// const Main = () => {
+//   const {
+//     onSent,
+//     recentPrompt,
+//     showResult,
+//     loading,
+//     resultData,
+//     setInput,
+//     input,
+//   } = useContext(Context);
+//   useEffect(() => {
+//     console.log("Updated resultData:", resultData);
+// }, [resultData]);
+
+
+//   return (
+//     <div className="main">
+//       <div className="nav">
+//         <p>Gemini</p>
+//         <img src={assets.user_icon} alt="" />
+//       </div>
+//       <div className="main-container">
+//         {showResult ? (
+//           <>
+//             {console.log("showResult:", showResult)};
+//             <div className="result">
+//               <div className="result-title">
+//                 <img src={assets.user_icon} alt="" />
+//                 <p>{recentPrompt}</p>
+//               </div>
+//               <div className="result-data">
+//                 <img src={assets.gemini_icon} alt="" />
+//                 {console.log("Rendering resultData:", resultData)}
+//                 <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
+//               </div>
+//             </div>
+//           </>
+//         ) : (
+//           <>
+//             <div className="greet">
+//               <p>
+//                 <span>Hello, Syed.</span>
+//               </p>
+//               <p>How can I help you today?</p>
+//             </div>
+//             <div className="cards">{/* Your cards here */}</div>
+//           </>
+//           // <div className="result">
+//           //   <div className="result-title">
+//           //     <img src={assets.user_icon} alt="" />
+//           //     <p>{recentPrompt}</p>
+//           //   </div>
+//           //   <div className="result-data">
+//           //     <img src={assets.gemini_icon} alt="" />
+//           //     <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
+//           //   </div>
+//           // </div>
+//         )}
+//         <div className="main-bottom">
+//           <div className="search-box">
+//             <input
+//               onChange={(e) => setInput(e.target.value)}
+//               value={input}
+//               type="text"
+//               placeholder="Enter a prompt here..."
+//             />
+//             <img src={assets.gallery_icon} alt="" />
+//             <img src={assets.mic_icon} alt="" />
+//             <img
+//               onClick={() => {
+//                 console.log("Input before sending:", input);
+//                 onSent(input);
+//               }}
+//               src={assets.send_icon}
+//               alt=""
+//             />
+//           </div>
+//           <p className="bottom-info">
+//             Gemini may display inaccurate info, so double-check its responses.
+//           </p>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Main;
+
+
 import "./Main.css";
 import { assets } from "../../assets/assets";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Context } from "../../context/Context";
-const Main = () => {
 
-  const {onSent, recentPrompt,showResult,loading,resultData,setInput,input} = useContext(Context)
+const Main = () => {
+  const {
+    onSent,
+    recentPrompt,
+    showResult,
+    loading,
+    resultData,
+    setInput,
+    input,
+  } = useContext(Context);
+
+  useEffect(() => {
+    console.log("Updated resultData:", resultData);
+  }, [resultData]);
 
   return (
     <div className="main">
@@ -13,17 +193,31 @@ const Main = () => {
         <img src={assets.user_icon} alt="" />
       </div>
       <div className="main-container">
-
-        {!showResult
-        ?<>
-        <div className="greet">
-          <p>
-            <span>Hello, Syed.</span>
-          </p>
-          <p>How can i help you today?</p>
-        </div>
-        <div className="cards">
-          <div className="card">
+        {showResult ? (
+          <>
+            {console.log("showResult:", showResult)};
+            <div className="result">
+              <div className="result-title">
+                <img src={assets.user_icon} alt="" />
+                <p>{recentPrompt}</p>
+              </div>
+              <div className="result-data">
+                <img src={assets.gemini_icon} alt="" />
+                {console.log("Rendering resultData:", resultData)}
+                <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="greet">
+              <p>
+                <span>Hello, Syed.</span>
+              </p>
+              <p>How can I help you today?</p>
+            </div>
+            <div className="cards">
+            <div className="card">
             <p>Suggest a beautifull place on the upcomming road trip</p>
             <img src={assets.compass_icon} alt="" />
           </div>
@@ -39,36 +233,38 @@ const Main = () => {
             <p>Improve the readibiality of the following code</p>
             <img src={assets.code_icon} alt="" />
           </div>
-        </div>
-        </>
-        :<div className="result">
-           <div className="result-title">
-            <img src={assets.user_icon} alt="" />
-            <p>{recentPrompt}</p>
-           </div>
-           <div className="result-data">
-            <img src={assets.gemini_icon} alt="" />
-            <p dangerouslySetInnerHTML={{__html:resultData}}></p>
-           </div>
-          </div>
-           }
-
-        
+            </div>
+          </>
+        )}
         <div className="main-bottom">
           <div className="search-box">
-            <input onChange={(e)=>setInput(e.target.value)} value={input} type="text" placeholder="Enter a promp here..." />
+            <input
+              onChange={(e) => setInput(e.target.value)}
+              value={input}
+              type="text"
+              placeholder="Enter a prompt here..."
+            />
             <img src={assets.gallery_icon} alt="" />
             <img src={assets.mic_icon} alt="" />
-            <img onClick={()=>onSent()} src={assets.send_icon} alt="" />
+            <img
+              onClick={() => {
+                console.log("Input before sending:", input);
+                onSent(input);
+              }}
+              src={assets.send_icon}
+              alt=""
+            />
           </div>
           <p className="bottom-info">
-        Gemini may display inaccurate info, including about people, so double-check its responses. Your privacy and Gemini Apps
-        </p>
+            Gemini may display inaccurate info, so double-check its responses.
+          </p>
         </div>
-        
       </div>
     </div>
   );
 };
 
 export default Main;
+
+
+          
